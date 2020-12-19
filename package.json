@@ -1,7 +1,7 @@
 {
   "name": "hy-profile",
-  "version": "1.0.0",
-  "description": "gets the profile of a given user",
+  "version": "1.0.1",
+  "description": "A simplified way of accessing the Hypixel API",
   "main": "hy-profile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
