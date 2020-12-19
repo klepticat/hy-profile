@@ -1,11 +1,14 @@
 {
   "name": "hy-profile",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A simplified way of accessing the Hypixel API",
   "main": "hy-profile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "klepticat",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "got": "^10.6.0"
+  }
 }

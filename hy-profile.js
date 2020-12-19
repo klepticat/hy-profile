@@ -1,35 +1,26 @@
-const https = require("https")
+//https://api.mojang.com/users/profiles/minecraft/${user}?at=${Math.floor(Date.now() / 1000)}
+//https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}
 
-function getID(user, _callback) {
-    https.get(`https://api.mojang.com/users/profiles/minecraft/${user}?at=${Math.floor(Date.now() / 1000)}`, (response) => {
-        let result = ''
-        response.on('data', (data) => {
-            result += data
-        })
+const got = require('got');
 
-        response.on('end', () => {
-            _callback(JSON.parse(result).id)
-        })
-    })
+const player = 'Klepti'
+const key = "c0f4f74d-98f3-4e04-b04f-410b54b93d59"
+
+exports.getID = async function getID(user) {
+    try {
+      const response = await got(`https://api.mojang.com/users/profiles/minecraft/${user}?at=${Math.floor(Date.now() / 1000)}`);
+      return JSON.parse(response.body).id
+    } catch (error) {
+      console.log(error);
+    }
 }
 
-exports.getProfiles = function getProfiles(user, apiKey) {
-    getID(user, (uuid) => {
-        console.log(uuid)
-        https.get(`https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`, (response) => {
-            let result = ''
-            response.on('data', (data) => {
-                result += data
-            })
-
-            response.on('end', () => {
-                var profiles = JSON.parse(result).player.stats.SkyBlock.profiles
-
-                console.log(`${user}'s Profiles:`)
-                Object.keys(profiles).forEach((key) => {
-                    console.log(profiles[key].cute_name)
-                })
-            })
-        })
-    })
+exports.getProfiles = async function getProfiles(user, apiKey) {
+    let uuid = await exports.getID(user)
+    try {
+      const response = await got(`https://api.hypixel.net/player?key=${apiKey}&uuid=${uuid}`);
+      return JSON.parse(response.body).player.stats.SkyBlock.profiles
+    } catch (error) {
+      console.log(error);
+    }
 }
