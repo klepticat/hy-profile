@@ -10,5 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "got": "^10.6.0"
-  }
+  },
+  "keywords": [
+    "minecraft",
+    "hypixel",
+    "api",
+    "skyblock"
+  ]
 }

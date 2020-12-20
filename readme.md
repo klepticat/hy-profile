@@ -4,6 +4,9 @@ Hy-Profile (HyP) is a simple NPM module made to make accessing the Hypixel API m
 
 On top of Hypixel API implementation, this also contains many other misc functions meant for accessing various other Minecraft related APIs to help with building other projects using this.
 
+[GitHub Repo](https://github.com/klepticat/hy-profile)
+[NPM Package](https://www.npmjs.com/package/hy-profile)
+
 ## Why?
 
 I originally decided to create this as I wanted to make a Discord bot using [Discord.JS](https://discord.js.org) that would add commands related to the Hypixel API, specifically for SkyBlock.
